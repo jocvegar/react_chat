@@ -3,6 +3,7 @@ import { ChatManager, TokenProvider } from '@pusher/chatkit';
 import MessageList from './MessageList';
 import SendMessageForm from './SendMessageForm';
 import TypingIndicator from './TypingIndicator';
+import WhoIsOnline from './WhoIsOnline';
 
 class ChatScreen extends Component {
 	constructor(props) {
@@ -51,6 +52,17 @@ class ChatScreen extends Component {
 		    			  	usersWhoAreTyping: this.state.usersWhoAreTyping.filter(
 		    			  		username => username !== user.name)
 		    			  })
+		    			},
+		    			onUserCameOnline: (user) => {
+		    			  console.log(`User ${user.name} came online`)
+							this.forceUpdate()
+		    			},
+		    			onUserWentOffline: (user) => {
+		    			  console.log(`User ${user.name} went offline`)
+		    			  this.forceUpdate()
+		    			},
+		    			onUserJoinedRoom: () => {
+		    				this.forceUpdate()
 		    			}
 		    		},
 		  		})
@@ -77,12 +89,19 @@ class ChatScreen extends Component {
 
 	render() {
 		return(
-			<div>
-				<h1>Chat</h1>
-				<p>Hello, {this.props.currentUsername}</p>
-				<MessageList messages={this.state.messages} />
-				<TypingIndicator usersWhoAreTyping={this.state.usersWhoAreTyping}/>
-				<SendMessageForm onSubmit={this.sendMessage} onChange={this.sendTypingEvent} />
+			<div className="wrapper">
+				<div className="users">
+					<h2>Who's online</h2>
+					<WhoIsOnline users={this.state.currentRoom.users} />
+				</div>
+				<div className="message-list-wrapper">
+					<div className="message-wrapper">
+						<MessageList messages={this.state.messages} />
+					</div>
+					<TypingIndicator usersWhoAreTyping={this.state.usersWhoAreTyping}/>
+					<SendMessageForm onSubmit={this.sendMessage} onChange={this.sendTypingEvent} />
+				</div>
+
 			</div>
 		);
 	}

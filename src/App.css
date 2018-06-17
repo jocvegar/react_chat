@@ -1,0 +1,18 @@
+.wrapper {
+	background: #FFF933;
+	height: 100vh;
+	display: flex;
+}
+
+.users {
+	width: 30%;
+	background-color: #0000ff;
+}
+
+.message-list-wrapper {
+	display: flex;
+	flex-direction: column;
+}
+.message-wrapper {
+	flex: 1;
+}
