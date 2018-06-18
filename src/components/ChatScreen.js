@@ -90,11 +90,11 @@ class ChatScreen extends Component {
 	render() {
 		return(
 			<div className="wrapper">
-				{/*<header className="header">
-									<h2>Aragán</h2>
-								</header>*/}
 				<div className="chat-wrapper">
 					<aside className="who-is-online-wrapper">
+						<header className="header">
+							<h2>Aragán</h2>
+						</header>
 						<WhosOnlineList
 							users={this.state.currentRoom.users}
 							currentUser={this.state.currentUser} />
