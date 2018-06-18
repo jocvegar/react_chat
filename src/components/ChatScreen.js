@@ -113,19 +113,3 @@ class ChatScreen extends Component {
 export default ChatScreen
 
 /* <p>{JSON.stringify(this.state.usersWhoAreTyping)}</p> */
-
-// <div className="wrapper">
-// 	<div className="chat-wrapper">
-// 		<aside className="who-is-online-wrapper">
-// 			<h2>Who's online</h2>
-// 			<WhoIsOnline users={this.state.currentRoom.users} />
-// 		</aside>
-// 	</div>
-// 	<div className="message-list-wrapper">
-// 		<div className="message-wrapper">
-// 			<MessageList messages={this.state.messages} />
-// 		</div>
-// 		<TypingIndicator usersWhoAreTyping={this.state.usersWhoAreTyping}/>
-// 		<SendMessageForm onSubmit={this.sendMessage} onChange={this.sendTypingEvent} />
-// 	</div>
-// </div>

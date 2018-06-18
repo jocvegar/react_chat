@@ -3,12 +3,11 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const Chatkit = require('@pusher/chatkit-server');
 
-
 const app = express()
 
 const chatkit = new Chatkit.default({
-  instanceLocator: 'v1:us1:e00ca932-e9eb-4bc3-977e-6fe565d22222',
-  key: 'e3978992-3f62-4251-b139-61891e74c6b0:z0n2un/vXENrNhKubicirnHU+b76bP2tgoSJwMetc7k=',
+	instanceLocator: 'v1:us1:e00ca932-e9eb-4bc3-977e-6fe565d22222',
+	key: 'e3978992-3f62-4251-b139-61891e74c6b0:z0n2un/vXENrNhKubicirnHU+b76bP2tgoSJwMetc7k=',
 })
 
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -30,14 +29,8 @@ app.post('/users', (req, res) => {
 	    	res.status(err.statusCode).json(err);
 	    	console.log(err);
 	    }
-	  });
+	});
 })
-
-// app.post('/authenticate', (req, res) => {
-// 	const { grant_type } = req.body
-// 	res.json(chatkit.authenticate({ grant_type, user_id: req.query.user_id },
-// 		req.query.user_id))
-// })
 
 app.post('/authenticate', (req, res) => {
   const authData = chatkit.authenticate({

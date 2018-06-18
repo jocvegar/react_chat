@@ -9,7 +9,6 @@ class App extends Component {
 		this.state = {
 			currentScreen: 'WhatIsYourUsernameScreen',
 			currentUsername: '',
-
 		}
 
 		this.onUsernameSubmitted = this.onUsernameSubmitted.bind(this)
