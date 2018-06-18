@@ -24,10 +24,10 @@ class SendMessageForm extends Component {
 
 	render(){
 		return(
-			<div>
-				<form onSubmit={this.onSubmit}>
-					<input type="text" placeholder="Say hello" onChange={this.onChange}/>
-					<input type="submit"/>
+			<div className="send-message-wrapper">
+				<form onSubmit={this.onSubmit} className="form-wrapper">
+					<input className="message-input" type="text" placeholder="Say hello" onChange={this.onChange}/>
+					<input className="message-input" type="submit"/>
 				</form>
 			</div>
 		);

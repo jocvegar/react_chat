@@ -3,7 +3,7 @@ import { ChatManager, TokenProvider } from '@pusher/chatkit';
 import MessageList from './MessageList';
 import SendMessageForm from './SendMessageForm';
 import TypingIndicator from './TypingIndicator';
-import WhoIsOnline from './WhoIsOnline';
+import WhosOnlineList from './WhoIsOnline';
 
 class ChatScreen extends Component {
 	constructor(props) {
@@ -21,7 +21,7 @@ class ChatScreen extends Component {
 
 	componentDidMount() {
 		const chatManager = new ChatManager({
-		  instanceLocator: 'v1:us1:5546b511-0858-41f6-9711-4967ef9b60c3',
+		  instanceLocator: 'v1:us1:e00ca932-e9eb-4bc3-977e-6fe565d22222',
 		  userId: this.props.currentUsername,
 		  tokenProvider: new TokenProvider({ url: 'http://localhost:3001/authenticate' }),
 		});
@@ -32,7 +32,7 @@ class ChatScreen extends Component {
 		 		this.setState({currentUser})
 		    // console.log('Successful connection', currentUser)
 		   		return currentUser.subscribeToRoom({
-		    		roomId: 9685255,
+		    		roomId: 9709974,
 		    		messageLimit: 100,
 		    		hooks: {
 		    			onNewMessage: message => {
@@ -90,18 +90,21 @@ class ChatScreen extends Component {
 	render() {
 		return(
 			<div className="wrapper">
-				<div className="users">
-					<h2>Who's online</h2>
-					<WhoIsOnline users={this.state.currentRoom.users} />
-				</div>
-				<div className="message-list-wrapper">
-					<div className="message-wrapper">
+				{/*<header className="header">
+									<h2>Aragán</h2>
+								</header>*/}
+				<div className="chat-wrapper">
+					<aside className="who-is-online-wrapper">
+						<WhosOnlineList
+							users={this.state.currentRoom.users}
+							currentUser={this.state.currentUser} />
+					</aside>
+					<section className="chat-list-wrapper">
 						<MessageList messages={this.state.messages} />
-					</div>
-					<TypingIndicator usersWhoAreTyping={this.state.usersWhoAreTyping}/>
-					<SendMessageForm onSubmit={this.sendMessage} onChange={this.sendTypingEvent} />
+						<TypingIndicator usersWhoAreTyping={this.state.usersWhoAreTyping}/>
+						<SendMessageForm onSubmit={this.sendMessage} onChange={this.sendTypingEvent} />
+					</section>
 				</div>
-
 			</div>
 		);
 	}
@@ -110,3 +113,19 @@ class ChatScreen extends Component {
 export default ChatScreen
 
 /* <p>{JSON.stringify(this.state.usersWhoAreTyping)}</p> */
+
+// <div className="wrapper">
+// 	<div className="chat-wrapper">
+// 		<aside className="who-is-online-wrapper">
+// 			<h2>Who's online</h2>
+// 			<WhoIsOnline users={this.state.currentRoom.users} />
+// 		</aside>
+// 	</div>
+// 	<div className="message-list-wrapper">
+// 		<div className="message-wrapper">
+// 			<MessageList messages={this.state.messages} />
+// 		</div>
+// 		<TypingIndicator usersWhoAreTyping={this.state.usersWhoAreTyping}/>
+// 		<SendMessageForm onSubmit={this.sendMessage} onChange={this.sendTypingEvent} />
+// 	</div>
+// </div>
