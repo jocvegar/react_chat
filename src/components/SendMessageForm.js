@@ -20,13 +20,14 @@ class SendMessageForm extends Component {
 	onSubmit(e) {
 		e.preventDefault();
 		this.props.onSubmit(this.state.text)
+		this.setState({ text: '' })
 	}
 
 	render(){
 		return(
 			<div className="send-message-wrapper">
 				<form onSubmit={this.onSubmit} className="form-wrapper">
-					<input className="message-input" type="text" placeholder="Say hello" onChange={this.onChange}/>
+					<input className="message-input" type="text" placeholder="Say hello" onChange={this.onChange} value={this.state.text}/>
 					<input className="message-input" type="submit"/>
 				</form>
 			</div>
